@@ -1560,7 +1560,7 @@ function determineCookieCategory(cookieName) {
             /experiment/i, /optimize/i, /hotjar/i
         ],
         advertising: [
-            /_gcl/i, /_fbp/i, /fr/i, /ad/i, /ads/i, /tracking/i, 
+            /_gcl/i, /_fbp/i, /fr/i, /ad/i, /ads/i, /tracking/i, /msclkid/i,
             /marketing/i, /doubleclick/i, /gclid/i, /fbclid/i,
             /pixel/i, /conversion/i, /retarget/i, /remarket/i,
             /affiliate/i, /partner/i, /campaign/i, /utm_/i,
