@@ -286,35 +286,96 @@ gtag('consent', 'default', {
 
 // Enhanced cookie database with detailed descriptions
 const cookieDatabase = {
-    // Google Analytics/GA4
-    '_ga': { category: 'analytics', duration: '2 years', description: 'Google Analytics user distinction' },
-    '_gid': { category: 'analytics', duration: '24 hours', description: 'Google Analytics user distinction' },
-    '_gat': { category: 'analytics', duration: '1 minute', description: 'Google Analytics throttle rate' },
-    '_ga_': { category: 'analytics', duration: '2 years', description: 'GA4 session state' },
-    
-    // Facebook Pixel
-    '_fbp': { category: 'advertising', duration: '3 months', description: 'Facebook conversion tracking' },
-    'fr': { category: 'advertising', duration: '3 months', description: 'Facebook targeted ads' },
-    
-    // Functional cookies
-    'wordpress_': { category: 'functional', duration: 'Session', description: 'WordPress authentication' },
-    'wp-settings': { category: 'functional', duration: '1 year', description: 'WordPress preferences' },
-    'PHPSESSID': { category: 'functional', duration: 'Session', description: 'PHP session' },
-    'cookie_consent': { category: 'functional', duration: '1 year', description: 'Stores cookie consent preferences' },
-    
-    // WooCommerce cookies
-    'woocommerce_items_in_cart': { category: 'functional', duration: 'Session', description: 'WooCommerce cart items tracking' },
-    'woocommerce_cart_hash': { category: 'functional', duration: 'Session', description: 'WooCommerce cart hash' },
-    
-    // Advertising cookies
-    '_gcl_au': { category: 'advertising', duration: '3 months', description: 'Google Ads conversion' },
-    'IDE': { category: 'advertising', duration: '1 year', description: 'Google DoubleClick' },
-    'NID': { category: 'advertising', duration: '6 months', description: 'Google user tracking' },
-    
-    // Other common cookies
-    'gclid_tracker': { category: 'advertising', duration: 'Session', description: 'Tracks Google Click ID for conversions' },
-    'tk_ai': { category: 'analytics', duration: 'Session', description: 'Jetpack/Tumblr analytics' },
-    'external_id': { category: 'functional', duration: 'Session', description: 'External service identifier' }
+    // ========== GOOGLE ========== //
+    '_gcl': { category: 'advertising', duration: '90 days', description: 'Google Click Identifier - Tracks ad clicks and conversions' },
+    '_gcl_au': { category: 'advertising', duration: '90 days', description: 'Google Ads conversion tracking' },
+    'gclid': { category: 'advertising', duration: '30 days', description: 'Google Click ID - Tracks PPC ad clicks' },
+    'IDE': { category: 'advertising', duration: '390 days', description: 'Google DoubleClick - Used for retargeting' },
+    'NID': { category: 'advertising', duration: '180 days', description: 'Google Ads preferences' },
+    '_gat_gtag': { category: 'advertising', duration: '1 minute', description: 'Google Tag Manager throttle' },
+
+    // ========== MICROSOFT ========== //
+    'msclkid': { category: 'advertising', duration: '30 days', description: 'Microsoft Click ID - Tracks ad clicks' },
+    'MUID': { category: 'advertising', duration: '390 days', description: 'Microsoft Universal ID' },
+    '_uetsid': { category: 'advertising', duration: '1 day', description: 'Bing Ads session ID' },
+    '_uetvid': { category: 'advertising', duration: '390 days', description: 'Bing Ads visitor ID' },
+
+    // ========== META (FACEBOOK) ========== //
+    '_fbp': { category: 'advertising', duration: '90 days', description: 'Facebook Pixel - Conversion tracking' },
+    'fr': { category: 'advertising', duration: '90 days', description: 'Facebook browser ID' },
+    'datr': { category: 'advertising', duration: '730 days', description: 'Facebook browser identification' },
+
+    // ========== TIKTOK ========== //
+    '_ttp': { category: 'advertising', duration: '390 days', description: 'TikTok Pixel tracking' },
+    'ttclid': { category: 'advertising', duration: '30 days', description: 'TikTok Click ID' },
+    'tt_sessionid': { category: 'advertising', duration: '1 day', description: 'TikTok session' },
+
+    // ========== LINKEDIN ========== //
+    'lidc': { category: 'advertising', duration: '1 day', description: 'LinkedIn Ads routing' },
+    'bcookie': { category: 'advertising', duration: '730 days', description: 'LinkedIn Browser ID' },
+    'li_sugr': { category: 'advertising', duration: '90 days', description: 'LinkedIn user tracking' },
+
+    // ========== PINTEREST ========== //
+    '_pinterest_ct_ua': { category: 'advertising', duration: '365 days', description: 'Pinterest Click Tracking' },
+    '_pinterest_sess': { category: 'advertising', duration: '1 day', description: 'Pinterest session' },
+    'cm_sub': { category: 'advertising', duration: '365 days', description: 'Pinterest conversion' },
+
+    // ========== OUTBRAIN ========== //
+    'obuid': { category: 'advertising', duration: '365 days', description: 'Outbrain user ID' },
+    'obcl': { category: 'advertising', duration: '30 days', description: 'Outbrain click tracking' },
+
+    // ========== TWITTER ========== //
+    'personalization_id': { category: 'advertising', duration: '730 days', description: 'Twitter personalization' },
+    'guest_id': { category: 'advertising', duration: '730 days', description: 'Twitter guest tracking' },
+
+    // ========== SNAPCHAT ========== //
+    'sc_at': { category: 'advertising', duration: '365 days', description: 'Snapchat Ads tracking' },
+    '_scid': { category: 'advertising', duration: '365 days', description: 'Snapchat user ID' },
+
+    // ========== REDDIT ========== //
+    'rdt_uuid': { category: 'advertising', duration: '365 days', description: 'Reddit unique user ID' },
+    'session_tracker': { category: 'advertising', duration: '1 day', description: 'Reddit session' },
+
+    // ========== CRITEO ========== //
+    'criteo': { category: 'advertising', duration: '365 days', description: 'Criteo retargeting' },
+    'uid': { category: 'advertising', duration: '365 days', description: 'Criteo user ID' },
+
+    // ========== ADROLL ========== //
+    '__adroll': { category: 'advertising', duration: '365 days', description: 'AdRoll tracking' },
+    '__ar_v4': { category: 'advertising', duration: '365 days', description: 'AdRoll segmentation' },
+
+    // ========== AMAZON ========== //
+    'ad-id': { category: 'advertising', duration: '270 days', description: 'Amazon Ad System ID' },
+    'ad-privacy': { category: 'advertising', duration: '730 days', description: 'Amazon Ad Preferences' },
+
+    // ========== YANDEX ========== //
+    'yandexuid': { category: 'advertising', duration: '365 days', description: 'Yandex Metrica user ID' },
+    'ymex': { category: 'advertising', duration: '365 days', description: 'Yandex Metrica visitor' },
+
+    // ========== QUORA ========== //
+    'm-b': { category: 'advertising', duration: '365 days', description: 'Quora browser ID' },
+    'm-uid': { category: 'advertising', duration: '365 days', description: 'Quora user ID' },
+
+    // ========== STACKADAPT ========== //
+    'sadb': { category: 'advertising', duration: '30 days', description: 'StackAdapt bidding data' },
+    'sadr': { category: 'advertising', duration: '30 days', description: 'StackAdapt retargeting' },
+
+    // ========== TRADEDESK ========== //
+    'TDID': { category: 'advertising', duration: '365 days', description: 'The Trade Desk ID' },
+    'TDCPM': { category: 'advertising', duration: '365 days', description: 'The Trade Desk CPM data' },
+
+    // ========== MEDIAMATH ========== //
+    'mmapi': { category: 'advertising', duration: '30 days', description: 'MediaMath API tracking' },
+    'mmdata': { category: 'advertising', duration: '30 days', description: 'MediaMath campaign data' },
+
+    // ========== ANALYTICS COOKIES ========== //
+    '_ga': { category: 'analytics', duration: '730 days', description: 'Google Analytics' },
+    '_gid': { category: 'analytics', duration: '1 day', description: 'Google Analytics' },
+    '_gat': { category: 'analytics', duration: '1 minute', description: 'Google Analytics throttle' },
+
+    // ========== FUNCTIONAL COOKIES ========== //
+    'PHPSESSID': { category: 'functional', duration: 'Session (until browser close)', description: 'PHP session' },
+    'cookie_consent': { category: 'functional', duration: '365 days', description: 'Consent preferences' }
 };
 
 // Language translations (keeping only en and fr as requested)
@@ -1546,34 +1607,77 @@ function determineCookieCategory(cookieName) {
     const lowerName = cookieName.toLowerCase();
     
     // Enhanced patterns for better categorization
-    const categoryPatterns = {
-        functional: [
-            /sess(ion)?/i, /token/i, /auth/i, /login/i, /user/i, /pref/i, 
-            /settings/i, /cart/i, /checkout/i, /hash/i, /items/i, /wp_/i,
-            /wordpress/i, /woocommerce/i, /secure/i, /csrf/i, /nonce/i,
-            /remember/i, /account/i, /basket/i, /order/i
-        ],
-        analytics: [
-            /_ga/i, /_gid/i, /_gat/i, /analytics/i, /stats/i, /measure/i, 
-            /track/i, /tk_/i, /amplitude/i, /mixpanel/i, /heatmap/i,
-            /clickmap/i, /scrollmap/i, /visitor/i, /visit/i, /ab_test/i,
-            /experiment/i, /optimize/i, /hotjar/i
-        ],
-        advertising: [
-            /_gcl/i, /_fbp/i, /fr/i, /ad/i, /ads/i, /tracking/i, /msclkid/i,
-            /marketing/i, /doubleclick/i, /gclid/i, /fbclid/i,
-            /pixel/i, /conversion/i, /retarget/i, /remarket/i,
-            /affiliate/i, /partner/i, /campaign/i, /utm_/i,
-            /trk/i, /ref/i, /clickid/i, /bing/i, /yandex/i,
-            /adroll/i, /taboola/i, /outbrain/i
-        ],
-        performance: [
-            /perf/i, /speed/i, /optimize/i, /cdn/i, /cache/i,
-            /load/i, /time/i, /latency/i, /bandwidth/i,
-            /resource/i, /asset/i, /static/i, /content/i
-        ]
-    };
-
+  const categoryPatterns = {
+    functional: [
+        /sess(ion)?/i, /token/i, /auth/i, /login/i, /user/i, /pref/i, 
+        /settings/i, /cart/i, /checkout/i, /hash/i, /items/i, /wp_/i,
+        /wordpress/i, /woocommerce/i, /secure/i, /csrf/i, /nonce/i,
+        /remember/i, /account/i, /basket/i, /order/i, /securetoken/i,
+        /validation/i, /verification/i, /access/i, /auth_token/i,
+        /sessionid/i, /persistence/i
+    ],
+    analytics: [
+        /_ga/i, /_gid/i, /_gat/i, /analytics/i, /stats/i, /measure/i, 
+        /track/i, /tk_/i, /amplitude/i, /mixpanel/i, /heatmap/i,
+        /clickmap/i, /scrollmap/i, /visitor/i, /visit/i, /ab_test/i,
+        /experiment/i, /optimize/i, /hotjar/i, /matomo/i, /piwik/i,
+        /segment/i, /sentry/i, /fullstory/i, /mouseflow/i, /inspectlet/i,
+        /luckyorange/i, /crazyegg/i, /gosquared/i, /chartbeat/i,
+        /kissmetrics/i, /adobe_analytics/i
+    ],
+    advertising: [
+        // Google
+        /_gcl/i, /gclid/i, /_gac/i, /_gcl_au/i, /googleadservices/i,
+        /doubleclick/i, /googleads/i, /googlesyndication/i,
+        
+        // Microsoft
+        /msclkid/i, /_uet/i, /_uetsid/i, /_uetvid/i, /bing/i,
+        
+        // Facebook/Meta
+        /_fbp/i, /fr/i, /fbclid/i, /datr/i, /sb/i, /facebook/i,
+        
+        // TikTok
+        /_ttp/i, /ttclid/i, /tt_sessionid/i, /tt_csrf_token/i, /tiktok/i,
+        
+        // LinkedIn
+        /lidc/i, /li_gc/i, /bcookie/i, /li_sugr/i, /linkedin/i,
+        
+        // Pinterest
+        /_pinterest/i, /pin_/i, /pinterest/i, /cm_sub/i,
+        
+        // Outbrain
+        /obuid/i, /obexp/i, /obcl/i, /obrec/i, /obtp/i, /outbrain/i,
+        
+        // Taboola
+        /t_gid/i, /t_session/i, /t_vpub/i, /t_click/i, /t_rec/i, /taboola/i,
+        
+        // Twitter
+        /personalization_id/i, /guest_id/i, /ct0/i, /att/i, /twitter/i,
+        
+        // Snapchat
+        /sc_at/i, /_scid/i, /_sctr/i, /snap_hist/i, /snap_uniq/i, /snapchat/i,
+        
+        // Quora
+        /m-b/i, /m-s/i, /m-uid/i, /m-vid/i, /m-attr/i, /quora/i,
+        
+        // Reddit
+        /reddit_ads/i, /rdt_uuid/i, /session_tracker/i, /ad_session/i, /ad_click/i,
+        
+        // Criteo
+        /criteo/i, /criteo_write_test/i, /uid/i, /optout/i, /cas/i,
+        
+        // General patterns
+        /ad/i, /ads/i, /tracking/i, /marketing/i, /pixel/i, /conversion/i,
+        /retarget/i, /remarket/i, /affiliate/i, /partner/i, /campaign/i,
+        /utm_/i, /trk/i, /ref/i, /clickid/i, /yandex/i, /adroll/i
+    ],
+    performance: [
+        /perf/i, /speed/i, /optimize/i, /cdn/i, /cache/i, /load/i,
+        /time/i, /latency/i, /bandwidth/i, /resource/i, /asset/i,
+        /static/i, /content/i, /lazy/i, /prefetch/i, /preload/i,
+        /bundle/i, /chunk/i, /compression/i, /defer/i, /async/i
+    ]
+};
     // Check each category's patterns
     for (const [category, patterns] of Object.entries(categoryPatterns)) {
         if (patterns.some(pattern => pattern.test(lowerName))) {
